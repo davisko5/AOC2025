@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QStringList codes;
 
 
-    QFile inputFile("/home/david/Projects/AOC2025/input.txt");
+    QFile inputFile("/home/david/Projects/AOC2025/input");
     if (inputFile.open(QIODevice::ReadOnly))
     {
         QTextStream in(&inputFile);
