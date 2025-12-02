@@ -5,8 +5,9 @@
 class AOC2025
 {
 public:
-    int part1(int start, int count, QStringList &codes);
-    int part2(int start, int count, QStringList &codes);
+    int day1part1(int start, int count, QStringList &codes);
+    int day1part2(int start, int count, QStringList &codes);
+    qint64 day2part1(QStringList &ids);
     AOC2025();
 };
 

@@ -1,6 +1,7 @@
 #include "aoc2025.h"
+#include <qdebug>
 
-int AOC2025::part1(int start, int count, QStringList &codes)
+int AOC2025::day1part1(int start, int count, QStringList &codes)
 {
     for (QString &c : codes) {
         if (c.contains('L')) {
@@ -33,7 +34,7 @@ int AOC2025::part1(int start, int count, QStringList &codes)
 
 }
 
-int AOC2025::part2(int start, int count, QStringList &codes)
+int AOC2025::day1part2(int start, int count, QStringList &codes)
 {
 
     for (QString &c : codes) {
@@ -87,6 +88,47 @@ int AOC2025::part2(int start, int count, QStringList &codes)
     }
 
     return count;
+
+}
+
+qint64 AOC2025::day2part1(QStringList &ids)
+{
+    struct Id {
+        qint64 first;
+        qint64 second;
+    };
+    qint64 sum = 0;
+
+    for (QString &i : ids) {
+        Id fullID;
+        auto lists = i.split("-");
+        fullID.first = lists.at(0).toLongLong();
+        fullID.second = lists.at(1).toLongLong();
+
+
+        for (fullID.first; fullID.first <= fullID.second; fullID.first++) {
+
+            QString fullString = QString::number(fullID.first);
+            QString part1 = fullString.mid(0, fullString.length() / 2);
+            QString part2 = fullString.mid(fullString.length() / 2);
+
+
+
+            if (part1 == part2) {
+                sum += fullID.first;
+            }
+
+
+
+        }
+
+
+
+
+    }
+    return sum;
+
+
 
 }
 
