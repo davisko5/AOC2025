@@ -1,6 +1,6 @@
 #include "aoc2025.h"
-#include <qdebug>
-#include <Qvariant>
+#include <QDebug>
+#include <QVariant>
 #include <QString>
 
 int AOC2025::day1part1(int start, int count, QStringList &codes)
@@ -167,7 +167,6 @@ qint64 AOC2025::day3part1(QStringList &banks)
 {
 
     // test input
-
     // banks = {"987654321111111", "811111111111119", "234234234234278", "818181911112111"};
     // banks = {"3256675555423246791212764521"}; // 97
     qint64 result = 0;
@@ -186,8 +185,6 @@ qint64 AOC2025::day3part1(QStringList &banks)
 
         for (int i = 0; i < b.length(); i++) {
 
-            // if (i == j - 1)
-                // break;
 
             QChar firstChar = b.at(i);
             currentFirst = firstChar.digitValue();
@@ -226,7 +223,7 @@ qint64 AOC2025::day3part2(QStringList &banks)
 {
     // test input
 
-    banks = {"987654321111111", "811111111111119", "234234234234278", "818181911112111"};
+    // banks = {"987654321111111", "811111111111119", "234234234234278", "818181911112111"};
     // banks = {"3256675555423246791212764521"}; // 97
     QStringList joltages = {};
     qint64 result = 0;
@@ -239,18 +236,11 @@ qint64 AOC2025::day3part2(QStringList &banks)
     }
 
     for (auto &j : joltages) {
-        qDebug() << j;
+        result += j.toLong();
     }
 
 
-
-    // loop durch string
-    // grösste Zahl finden
-    // pos & zahl merken
-    // QStringsList cutten, ab pos
-
-
-    return 0;
+    return result;
 
 }
 
@@ -259,6 +249,7 @@ AOC2025::AOC2025() {
 
 }
 
+// Königsrekursion
 void AOC2025::findLargestDigit(QString &b, int firstPos)
 {
 
@@ -276,15 +267,17 @@ void AOC2025::findLargestDigit(QString &b, int firstPos)
         QChar firstChar = b.at(i);
         currentFirst = firstChar.digitValue();
 
+        qDebug() << "ich brauche noch zeichen: " << 12 -mSingleJoltage.length();
+        qDebug() << "ich habe noch Zeichen im String:" << b.length()-i;
 
-        if (currentFirst > first.toInt() && 12 - mSingleJoltage.length() <= b.length() - pos) {
+        if (currentFirst > first.toInt() && 12 - mSingleJoltage.length() <= b.length() - i) {
             first = currentFirst;
             firstPos = i;
         }
 
     }
 
-    mSingleJoltage.append(QString::number(first.toInt()));
+    mSingleJoltage.append(first.toString());
     firstPos++;
     findLargestDigit(b, firstPos);
 
