@@ -1,5 +1,6 @@
 #include "aoc2025.h"
 #include <qdebug>
+#include <Qvariant>
 
 int AOC2025::day1part1(int start, int count, QStringList &codes)
 {
@@ -30,7 +31,7 @@ int AOC2025::day1part1(int start, int count, QStringList &codes)
 
     }
 
-   return count;
+    return count;
 
 }
 
@@ -129,6 +130,93 @@ qint64 AOC2025::day2part1(QStringList &ids)
     return sum;
 
 
+
+}
+
+qint64 AOC2025::day2part2(QStringList &ids)
+{
+    struct Id {
+        qint64 first;
+        qint64 second;
+    };
+    qint64 sum = 0;
+
+    for (QString &i : ids) {
+        Id fullID;
+        auto lists = i.split("-");
+        fullID.first = lists.at(0).toLongLong();
+        fullID.second = lists.at(1).toLongLong();
+
+        for (fullID.first; fullID.first <= fullID.second; fullID.first++) {
+
+            QString fullString = QString::number(fullID.first);
+            
+            // anz. 
+     
+
+          
+        }
+
+    }
+    return sum;
+}
+
+
+qint64 AOC2025::day3part1(QStringList &banks)
+{
+
+    // test input
+
+    // banks = {"987654321111111", "811111111111119", "234234234234278", "818181911112111"};
+    // banks = {"3256675555423246791212764521"}; // 97
+    qint64 result = 0;
+
+
+
+    for (QString &b : banks) {
+        QVariant first = 0;
+        QVariant second = 0;
+        int currentFirst = 0;
+        int currentSecond = 0;
+        int firstPos = 0;
+        int secondPos = b.length() - 1;
+
+
+
+        for (int i = 0; i < b.length(); i++) {
+
+            // if (i == j - 1)
+                // break;
+
+            QChar firstChar = b.at(i);
+            currentFirst = firstChar.digitValue();
+
+
+            if (currentFirst > first.toInt() && i < b.length() - 1 ) {
+                first = currentFirst;
+                firstPos = i;
+            }
+
+        }
+
+        for (int j = firstPos + 1; j < b.length(); j++) {
+            QChar secondChar = b.at(j);
+            currentSecond = secondChar.digitValue();
+
+            if (currentSecond > second.toInt()) {
+                second = currentSecond;
+            }
+
+        }
+
+        qDebug() << (first.toString()+second.toString());
+
+        int joltage = (first.toString()+second.toString()).toInt();
+        result += joltage;
+
+
+    }
+    return result;
 
 }
 

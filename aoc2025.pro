@@ -1,4 +1,4 @@
-QT = core
+QT += core
 
 CONFIG += c++17 cmdline
 
@@ -17,6 +17,7 @@ DISTFILES += \
         input \
         input_day2 \
         testinput_day2 \
+        input_day3 \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

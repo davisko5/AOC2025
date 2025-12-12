@@ -16,15 +16,15 @@ int main(int argc, char *argv[])
 
     // QFile inputFile("/home/david/Projects/AOC2025/input"); linux
     // QFile inputFile("C:\\Users\\f08245e\\Documents\\Projects\\AOC2025\\testinput_day2");
-    QFile inputFile("C:\\Users\\f08245e\\Documents\\Projects\\AOC2025\\input_day2");
+    QFile inputFile("C:\\Users\\f08245e\\Documents\\Projects\\AOC2025\\input_day3");
     if (inputFile.open(QIODevice::ReadOnly))
     {
         QTextStream in(&inputFile);
         while (!in.atEnd())
         {
             QString line = in.readLine();
-             // codes.append(line);
-            ids.append(line.split(','));
+             codes.append(line);
+            // ids.append(line.split(','));
         }
         inputFile.close();
     }
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     // for (auto id : ids) {
     //     qDebug() << id;
     // }
-    qDebug() << aoc.day2part1(ids);
+    qDebug() << aoc.day3part1(codes);
 
 }
 
