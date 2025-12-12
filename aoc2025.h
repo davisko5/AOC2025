@@ -11,7 +11,11 @@ public:
     qint64 day2part1(QStringList &ids);
     qint64 day2part2(QStringList &ids);
     qint64 day3part1(QStringList &banks);
+    qint64 day3part2(QStringList &banks);
+    QString mSingleJoltage;
     AOC2025();
+private:
+    void findLargestDigit(QString &b, int firstPos);
 };
 
 #endif // AOC2_25_H

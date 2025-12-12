@@ -1,6 +1,7 @@
 #include "aoc2025.h"
 #include <qdebug>
 #include <Qvariant>
+#include <QString>
 
 int AOC2025::day1part1(int start, int count, QStringList &codes)
 {
@@ -220,7 +221,73 @@ qint64 AOC2025::day3part1(QStringList &banks)
 
 }
 
+
+qint64 AOC2025::day3part2(QStringList &banks)
+{
+    // test input
+
+    banks = {"987654321111111", "811111111111119", "234234234234278", "818181911112111"};
+    // banks = {"3256675555423246791212764521"}; // 97
+    QStringList joltages = {};
+    qint64 result = 0;
+
+    for (QString  &b : banks) {
+        mSingleJoltage = "";
+        findLargestDigit(b, 0);
+        joltages.append(mSingleJoltage);
+
+    }
+
+    for (auto &j : joltages) {
+        qDebug() << j;
+    }
+
+
+
+    // loop durch string
+    // grösste Zahl finden
+    // pos & zahl merken
+    // QStringsList cutten, ab pos
+
+
+    return 0;
+
+}
+
 AOC2025::AOC2025() {
+
+
+}
+
+void AOC2025::findLargestDigit(QString &b, int firstPos)
+{
+
+
+    if (mSingleJoltage.length() == 12)
+        return;
+
+
+    QVariant first = 0;
+    int currentFirst = 0;
+    int pos = firstPos;
+
+
+    for (int i = pos; i < b.length(); i++ ) {
+        QChar firstChar = b.at(i);
+        currentFirst = firstChar.digitValue();
+
+
+        if (currentFirst > first.toInt() && 12 - mSingleJoltage.length() <= b.length() - pos) {
+            first = currentFirst;
+            firstPos = i;
+        }
+
+    }
+
+    mSingleJoltage.append(QString::number(first.toInt()));
+    firstPos++;
+    findLargestDigit(b, firstPos);
+
 
 
 }

@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     // for (auto id : ids) {
     //     qDebug() << id;
     // }
-    qDebug() << aoc.day3part1(codes);
+    qDebug() << aoc.day3part2(codes);
 
 }
 
